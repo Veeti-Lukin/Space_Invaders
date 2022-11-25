@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Embedded_Exercise_normal/src/game.h&apos;" deleteContents="false" description="Delete resource &apos;Embedded_Exercise_normal/src/game.h&apos;" element1="/Embedded_Exercise_normal/src/game.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1668774792448"/>&#x0A;<refactoring comment="Delete resource &apos;Embedded_Exercise_normal/src/game.c&apos;" deleteContents="false" description="Delete resource &apos;Embedded_Exercise_normal/src/game.c&apos;" element1="/Embedded_Exercise_normal/src/game.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1668774801697"/>
+</session>

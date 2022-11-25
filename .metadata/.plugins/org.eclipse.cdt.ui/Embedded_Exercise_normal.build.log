@@ -1,0 +1,8 @@
+17:06:41 **** Incremental Build of configuration Debug for project Embedded_Exercise_normal ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Kohteelle "main-build" ei tarvitse tehd‰ mit‰‰n.
+
+17:06:43 Build Finished (took 2s.353ms)
+

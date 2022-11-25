@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Embedded_Exercise_normal/src/led_matrix_driver.S&apos;" deleteContents="false" description="Delete resource &apos;Embedded_Exercise_normal/src/led_matrix_driver.S&apos;" element1="/Embedded_Exercise_normal/src/led_matrix_driver.S" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1634641859892"/>
+</session>

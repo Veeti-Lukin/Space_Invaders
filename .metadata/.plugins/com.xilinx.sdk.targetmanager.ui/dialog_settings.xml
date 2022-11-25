@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="" key="system_hw_platform_0-bmmFile"/>
+	<item value="false" key="Exercise-partial_bit"/>
+	<item value="top.bit" key="system_hw_platform_0-bitFile"/>
+	<item value="Auto Detect" key="system_hw_platform_0-device"/>
+	<item value="false" key="system_hw_platform_0-partial_bit"/>
+	<item value="Auto Detect" key="Exercise-device"/>
+	<item value="Local" key="Exercise-target"/>
+	<item value="Local" key="top_hw_platform_0-target"/>
+	<item value="" key="Exercise-bmmFile"/>
+	<item value="Local" key="system_hw_platform_0-target"/>
+	<item value="Exercise" key="programfpga.hwplatform"/>
+	<item value="top.bit" key="top_hw_platform_0-bitFile"/>
+	<item value="false" key="top_hw_platform_0-partial_bit"/>
+	<item value="" key="top_hw_platform_0-bmmFile"/>
+	<item value="top.bit" key="Exercise-bitFile"/>
+	<item value="Auto Detect" key="top_hw_platform_0-device"/>
+</section>

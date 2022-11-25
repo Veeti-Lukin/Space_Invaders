@@ -1,0 +1,16 @@
+/*
+ * game.c
+ *
+ *  Created on: 18.11.2022
+ *      Author: gtvelu
+ */
+#include "game.h"
+
+void move_space_ship_left()
+{
+	if (SPACE_SHIP_XLOCATION > 0) { SPACE_SHIP_XLOCATION; }
+}
+
+void move_space_ship_right();
+void move_alien();
+void move_projectile();

@@ -1,0 +1,9 @@
+/*
+ * game.c
+ *
+ *  Created on: 18.11.2022
+ *      Author: gtvelu
+ */
+#include "game.h"
+
+uint8_t = space_ship_xlocation;

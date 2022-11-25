@@ -1,0 +1,173 @@
+/*
+ * Pixel.c
+ *
+ *  Created on: -----
+ *      Author: -----
+ */
+
+#include "Pixel.h"
+
+//########GOLABL VARIABLES
+// control signals used to control led matrix
+uint8_t* CONTROL_SIGNALS = 0x41220008;
+// Channels used for controlling which columns of leds are on
+uint8_t* CHANNEL = 0x41220000;
+
+
+// 0,0 index is the first pixel at the left upmost pixel
+//Table for pixel dots, and their color values.
+//				 dots[X][Y][COLOR]
+volatile uint8_t dots[8][8][3]={0};
+
+// Here the setup operations for the LED matrix will be performed
+void setup(){
+	//reseting screen at start is a MUST to operation (RST-pin to will also be set 0).
+	*CONTROL_SIGNALS = 0;
+	*CHANNEL = 0;
+
+	//set control signal RST-pin back to 1, was "up" at 0
+	usleep(500);
+	*CONTROL_SIGNALS |= 0b00001;
+
+	// CHANGES THE BRIGHTNESS OF THE LEDS
+	//Code that sets 6-bit values in register of DM163 chip, which is accountable of the brightness of the leds. Recommended that every bit in that register is set to 1. 6-bits and 24 "bytes"
+	//24*6 bits needs to be transmitted
+
+	// set SDA-pin to 1. SDA is the input transferred when SCK goes up
+	*CONTROL_SIGNALS |= 0b10000;
+
+	//leds in the vertical column
+	for(uint8_t led = 1; led <= 8; led++)
+	{
+		// color 1=blue , 2=green , 3=red
+		for (uint8_t color = 1; color <= 3; color++)
+		{
+			// for each bit in 6bit register
+			for(uint8_t bit = 0; bit <= 5; bit++)
+			{
+				//SCK-pin aka writing clock up
+				*CONTROL_SIGNALS |= 0b01000;
+				//SCK-pin aka writing clock down
+				*CONTROL_SIGNALS &= 0b10111;
+			}
+		}
+	}
+
+	// set SDA-pin back to 0.
+	*CONTROL_SIGNALS &= 0b01111;
+
+	// Activate SB-pin to enable transmission to 8-bit register (color values register)
+	*CONTROL_SIGNALS |= 0b00100;
+}
+
+//Change color value of one pixel at led matrix. This function is only used for changing values of dots array
+void SetPixel(uint8_t x,uint8_t y, uint8_t r, uint8_t g, uint8_t b){
+	dots[x][y][0]=b;
+	dots[x][y][1]=g;
+	dots[x][y][2]=r;
+}
+
+
+//Put new data to led matrix. Hint: This function is supposed to send 24-bytes and parameter x is for channel x-coordinate.
+void run(uint8_t x){
+	// secure latch bit to 0
+	*CONTROL_SIGNALS &= 0b11101;
+
+	//Write code that writes data to led matrix (8-bit data). Use values from dots array
+	//Hint: use nested loops (loops inside loops)
+	//Hint2: loop iterations are 8,3,8 (pixels,color,8-bitdata)
+
+	//leds in the vertical column
+	for(uint8_t led = 0; led < 8; led++)
+	{
+		// color 0=blue , 1=green , 2=red
+		for (uint8_t color = 0; color < 3; color++)
+		{
+			// color value in question as uint
+			uint8_t color_value = dots[x][led][color];
+
+			// for each bit in 8bit register
+			for(uint8_t bit = 0; bit < 8; bit++)
+			{
+				// set SDA-pin debending if color_value MSB is 0 or 1.
+				if (color_value & 0b10000000)
+					// set SDA-pin to 1.
+					*CONTROL_SIGNALS |= 0b10000;
+				else
+					// set SDA-pin to 0.
+					*CONTROL_SIGNALS &= 0b01111;
+
+				//SCK-pin aka writing clock up
+				*CONTROL_SIGNALS |= 0b01000;
+				//SCK-pin aka writing clock down
+				*CONTROL_SIGNALS &= 0b10111;
+
+				// shift color_value variable to left once so that the MSB is now ex-next to MSB
+				color_value <<=1;
+			}
+		}
+	}
+
+	//see latch docstring
+	latch();
+}
+
+//Latch signal. See colorsshield.pdf or DM163.pdf page 3 in project folder on how latching works.
+//Latch basically tells that 6bit and 8 bit registers grayscale data can now be transmitted to comparator and will be show in the led matrix
+void latch(){
+	// raise the Lat bit up
+	*CONTROL_SIGNALS |= 0b00010;
+	// turn the lat bit down
+	*CONTROL_SIGNALS &= 0b11101;
+}
+
+
+//Set one line (channel) as active, one at a time.
+//one line activates one column in the led matrix
+void open_line(uint8_t x){
+	switch (x)
+	{
+		default:
+			*CHANNEL = 0;
+			break;
+
+		case 0:
+			*CHANNEL = 0b00000001;
+			break;
+
+		case 1:
+			*CHANNEL = 0b00000010;
+			break;
+
+		case 2:
+			*CHANNEL = 0b00000100;
+			break;
+
+		case 3:
+			*CHANNEL = 0b00001000;
+			break;
+
+		case 4:
+			*CHANNEL = 0b00010000;
+			break;
+
+		case 5:
+			*CHANNEL = 0b00100000;
+			break;
+
+		case 6:
+			*CHANNEL = 0b01000000;
+			break;
+
+		case 7:
+			*CHANNEL = 0b10000000;
+			break;
+	}
+}
+
+void ClearPixels(){
+	dots[8][8][3]={0};
+}
+
+
+

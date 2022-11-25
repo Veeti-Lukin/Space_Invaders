@@ -1,0 +1,42 @@
+
+//ARM INSTRUCTIONS
+//Instructions are conditional
+//32-bit instruction
+
+
+//How to load data from memory:
+//LDR R0, =variable 	(Load address to register. You can use any global variable defined in main.c, or variable found here)
+//LDR R1, [R0] 			(Load data from address, in this case 32-bit data)
+//LDRB R1, [R0] 		(Load data from address, in this case 8-bit data)
+//******
+//LDR R0, =0x123456		(Load address to register, Use only if you know the memory address)
+//LDR R1, [R0]			(load data from address, in this case 32-bit data)
+//LDRB R1, [R0]			(load data from address, in this case 8-bit data)
+
+//How to store data to memory:
+//STR R1,[R0]			(R1 contains the data and R0 contains the address where  to store, 32-bit)
+//STRB R1,[R0]			(R1 contains the data and R0 contains the address where  to store, 8-bit)
+
+
+.data
+	dir: .byte 1		//8-bit variable for direction
+	                    // Add position here
+
+
+.text
+
+.global blinker
+
+
+blinker:
+
+	push {r0}				//Push used register to stack
+
+
+
+	pop {r0}				//Pop register from stack, Remember the pop order if used more than one register (first pushed, last popped)
+	bx lr					//Return to place where this function has been called.
+
+
+
+

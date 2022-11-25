@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+# 
+# Start of session at: Tue Aug  6 14:29:04 2019
+# Process ID: 7460
+# Current directory: P:/Johsul_harkka/webtalk
+# Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
+# Log file: P:/Johsul_harkka/webtalk/webtalk.log
+# Journal file: P:/Johsul_harkka/webtalk\webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

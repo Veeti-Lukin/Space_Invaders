@@ -1,0 +1,14 @@
+/*
+ * game.h
+ *
+ *  Created on: 18.11.2022
+ *      Author: gtvelu
+ */
+
+#ifndef SRC_GAME_H_
+#define SRC_GAME_H_
+
+uint8_t = space_ship_xlocation;
+
+
+#endif /* SRC_GAME_H_ */

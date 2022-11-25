@@ -1,0 +1,21 @@
+/*
+ * game.h
+ *
+ *  Created on: 18.11.2022
+ *      Author: gtvelu
+ */
+
+#ifndef SRC_GAME_H_
+#define SRC_GAME_H_
+
+#include <stdio.h>
+
+uint8_t SPACE_SHIP_XLOCATION;
+uint8_t ALIEN_XLOCATION;
+
+void move_space_ship_left();
+void move_space_ship_right();
+void move_alien();
+void move_projectile();
+
+#endif /* SRC_GAME_H_ */
