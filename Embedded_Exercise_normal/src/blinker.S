@@ -1,3 +1,9 @@
+/// First call of function activates rightmost led on PYNQ-Z1
+/// Calls after that activates led left of the last activated led until last led on the left is reched
+/// Then changes direction and does the same to right until rightmost led is reached
+
+
+
 
 //ARM INSTRUCTIONS
 //Instructions are conditional
