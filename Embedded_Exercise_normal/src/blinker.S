@@ -40,14 +40,9 @@ blinker:
 	cmp r1, #0				//compare if led controlling register is 0
 	beq position_zero		//if it is branch to position_zero
 
-	// t‰‰ ei toimi
 	cmp r3, #1				//compare if moving direction variable is 1
 	beq shift_left			//if it is 1 branch to shift_left
 	bne shift_right			//if it is 0 branch to shift_right
-
-	// t‰‰ toimii
-	//lsl r1, r1, #1
-	//b end
 
 position_zero:
 	mov r1, #1				//set led control value to be 1
@@ -89,8 +84,4 @@ end:
 	pop {r0}
 	bx lr					//Return to place where this function has been called.
 
-
-
-
-
-
+// amount of subfunctions could probably be reduced with some conditinal instructions 
