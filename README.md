@@ -10,6 +10,8 @@ My task was mainly implement the functionality of the "Embedded_Exercise_normal/
 
 # Demo
 ![space_invaders_demo_explained](https://user-images.githubusercontent.com/45012330/211307959-59b992ec-c3f9-485a-9ef8-b9e9bdd353ac.png)
+
 ![space_invaders_demo_explained2](https://user-images.githubusercontent.com/45012330/211307974-e25a3cde-eb17-4032-88e0-9eeddc6387bd.png)
+
 https://user-images.githubusercontent.com/45012330/211306380-fcc27a48-f6dc-45c0-9fad-db07023579a6.mp4
 
